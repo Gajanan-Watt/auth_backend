@@ -12,7 +12,7 @@ const verifyToken = (token) => {
 module.exports = async (req, res, next) => {
   // if we received token in the header
   const bearerToken = req.headers.authorization;
-  console.log(bearerToken);
+  // console.log(bearerToken);
 
   // if not bearer token
 
@@ -22,7 +22,7 @@ module.exports = async (req, res, next) => {
   //else we will try to get the user from the token
 
   const token = bearerToken.split(" ")[1];
-  console.log("token", token);
+  // console.log("token", token);
 
   let user;
   try {

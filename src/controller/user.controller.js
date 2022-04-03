@@ -2,14 +2,14 @@ const express = require("express");
 const { modelName } = require("../model/user.model");
 const protect = require("../middleware/authenticate");
 
-const user = require("../model/user.model");
+const User = require("../model/user.model");
 
 const router = express.Router();
 
 router.post("/", protect, async (req, res) => {
   try {
     const user = await user.create(req.body);
-    console.log(user);
+    // console.log(user);
     return res.status(200).send(user);
   } catch (e) {
     return res.status(400).json({ message: e.message, status: "Failed" });
@@ -18,7 +18,7 @@ router.post("/", protect, async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    const user = await user.find();
+    const user = await User.find();
     // console.log(user);
     return res.status(200).send(user);
   } catch (e) {
@@ -28,7 +28,7 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const user = await user.findById(req.params.id);
+    const user = await User.findById(req.params.id);
     // console.log(user);
     return res.status(200).send(user);
   } catch (e) {

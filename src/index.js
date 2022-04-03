@@ -10,12 +10,16 @@ app.use(cors());
 
 const { register, login } = require("./controller/auth.controller");
 
+// const userController = require("./controller/user.controller");
+
+// app.use("/profile", userController);
+
 app.post(
   "/register",
   body("email").custom(async (value) => {
     // value = a@a.com
     const isEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,20}$/.test(value);
-    console.log(isEmail, value);
+    // console.log(isEmail, value);
     if (!isEmail) {
       throw new Error("Please enter a proper email address!");
     }
