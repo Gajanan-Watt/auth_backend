@@ -1,11 +1,12 @@
 const express = require("express");
 const { modelName } = require("../model/user.model");
+const protect = require("../middleware/authenticate");
 
 const user = require("../model/user.model");
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", protect, async (req, res) => {
   try {
     const user = await user.create(req.body);
     console.log(user);
